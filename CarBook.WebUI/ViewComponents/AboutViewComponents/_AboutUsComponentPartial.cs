@@ -4,11 +4,11 @@ using Newtonsoft.Json;
 
 namespace CarBook.WebUI.ViewComponents.AboutViewComponents
 {
-    public class _AboutUsViewComponents:ViewComponent
+    public class _AboutUsComponentPartial:ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public _AboutUsViewComponents(IHttpClientFactory httpClientFactory)
+        public _AboutUsComponentPartial(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
@@ -16,7 +16,7 @@ namespace CarBook.WebUI.ViewComponents.AboutViewComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:5187/api/Abouts");
+            var responseMessage = await client.GetAsync("http://localhost:5187/api/Abouts");
 
             if(responseMessage.IsSuccessStatusCode)
             {
